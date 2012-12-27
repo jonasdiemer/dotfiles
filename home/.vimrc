@@ -1,5 +1,34 @@
 " vim:fdm=marker
 
+" Vundle {{{
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle. required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here
+" original repos on github
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jonasdiemer/LaTeX-Box'
+Bundle 'kien/python-mode'
+Bundle 'SirVer/ultisnips'
+Bundle 'bronson/vim-visual-star-search'
+
+" vim-scripts repos
+"Bundle 'FuzzyFinder'
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" ...
+
+filetype plugin indent on     " required!
+" }}}
+
 " Basic stuff {{{
 " Appearance {{{
 set nocompatible            	" choose no compatibility with legacy vi
@@ -36,7 +65,6 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 "smart indent/tab
 set smartindent
 set smarttab
-filetype plugin indent on       " load file type plugins + indentation
 " show trailing white space 
 highlight ExtraWhitespace ctermbg=grey guibg=lightgreen 
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
@@ -80,10 +108,6 @@ map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 set switchbuf=usetab " Open existing tabs
 "}}}
-" pathogen for plugins {{{
-call pathogen#infect() 
-call pathogen#helptags()
-" }}}
 " }}}
 
 " Experimental {{{
