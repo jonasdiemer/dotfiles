@@ -1,0 +1,203 @@
+" vim:fdm=marker
+
+" Basic stuff {{{
+" Appearance {{{
+set nocompatible            	" choose no compatibility with legacy vi
+syntax enable
+set encoding=utf-8
+set showcmd                     " display incomplete commands
+set number 			" enable line numbers
+set cc=80 			" highlight column 80
+set t_Co=256
+colorscheme xoria256 " also nice: wombat256mod, inkpot, pablo, torte
+set laststatus=2 		" enable status line always
+set hidden          " don't close buffers
+set clipboard=unnamed   " copy/paste works with rest of system
+autocmd! bufwritepost .vimrc source %   " automatically reload vimrc on changes
+set mouse=a " enable mouse
+set ttymouse=xterm2 " enable dragging
+"}}}
+" Diff {{{
+" turn wrap back on for diffs
+autocmd FilterWritePre * if &diff | set wrap | endif
+"}}}
+" Autocompletion similar to bash {{{
+set wildmenu
+set wildmode=longest,list "completion like bash, cycle through options
+set completeopt=longest,menu
+" }}}
+" Whitespace {{{
+set wrap                      " wrap lines...
+set linebreak  " ... at word borders
+set textwidth=0                 " don't wrap during insert mode
+set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
+set expandtab                   " use spaces, not tabs (optional)
+set backspace=indent,eol,start  " backspace through everything in insert mode
+"smart indent/tab
+set smartindent
+set smarttab
+filetype plugin indent on       " load file type plugins + indentation
+" show trailing white space 
+highlight ExtraWhitespace ctermbg=grey guibg=lightgreen 
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+"}}}
+" Searching {{{
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+nmap ,/ :noh<CR> 		" reset highlights on ,/ 
+" }}}
+" Spell Checking {{{
+" English by default
+set spell spelllang=en_us
+" mappings to switch
+nmap <F12>us :setlocal spell spelllang=en_us <CR>
+nmap <F12>c :setlocal nospell <CR>
+nmap <F12>de :setlocal spell spelllang=de <CR>
+" open suggestions in Insert Mode Completion popup
+imap <F9> <C-x>s
+nmap <F9> <Esc>ea<C-x>s
+"set mousemodel=popup_setpos 	" right click -> popup
+" find and highlight duplicate words
+autocmd Syntax * syn match SpellRare /\v<(\w+)\_s+\1>/ containedin=ALL
+" }}}
+" Misc {{{
+
+" Navigate with j,k in Insert Mode Completion (also for spell check)
+inoremap <expr> j pumvisible() ? "\<C-N>" : "j"
+inoremap <expr> k pumvisible() ? "\<C-P>" : "k"
+"}}}
+" easier split/tab navigation {{{
+" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
+" Every unnecessary keystroke that can be saved is good for your health :)
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+" easier moving between tabs
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
+set switchbuf=usetab " Open existing tabs
+"}}}
+" pathogen for plugins {{{
+call pathogen#infect() 
+call pathogen#helptags()
+" }}}
+" }}}
+
+" Experimental {{{
+" center-cursor movement
+nmap <C-j> jzz
+nmap <C-k> kzz
+set so=7 "keep some lines visible on scroll
+
+" Rebind <Leader> key
+" I like to have it here becuase it is easier to reach than the default and
+" it is next to ``m`` and ``n`` which I use for navigating between tabs.
+let mapleader = ","
+
+" Unbind cursor keys for training
+for prefix in ['i', 'n', 'v']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    "exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
+
+" Store swap/backup files in central position
+silent !mkdir ~/.vim/backup/ 2>/dev/null
+set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
+
+" This allows for change paste motion cp{motion}
+nmap <silent> cp :set opfunc=ChangePaste<CR>g@
+function! ChangePaste(type, ...)
+    silent exe "normal! `[v`]\"_c"
+    silent exe "normal! p"
+endfunction
+
+" }}}
+
+" EasyTags {{{
+let g:easytags_by_filetype = "~/.vimtag"
+" follow tag more like eclipse
+:map <F3> <C-]>
+:map <S-F3> :sp<CR><C-]>
+" Disable automatic highlighting
+"let b:easytags_auto_highlight = 0
+" }}}
+
+" NERDTree {{{
+:nmap <C-n> :NERDTreeTabsToggle<CR>
+let NERDTreeIgnore = ['\~$', '\.pyc$'] 
+" }}}
+
+" CtrlP {{{
+" ctrlp: keep cache
+let g:ctrlp_clear_cache_on_exit = 0
+" define working path mode
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
+" Sane Ignore For ctrlp                                                         
+let g:ctrlp_custom_ignore = {                                                   
+  \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$\|\.gvfs$\|\.cache$\|\.thumbnails$\|temp$',
+  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.pdf$\|\.pyc$'
+  \ } 
+" ignore dotfiles/dotdirs
+let g:ctrlp_dotfiles = 0
+" speed up
+let g:ctrlp_max_files = 10000
+" Optimize file searching
+" can not use g:ctrlp_custom_ignore['dir'] in grep...
+let g:user_cmd_ignore = g:ctrlp_custom_ignore['file'] . '\|\.git\|\.hg\|\.svn'
+if has("unix")
+    let g:ctrlp_user_command = {
+                \   'types': {
+                \       1: ['.git/', 'cd %s && git ls-files']
+                \   },
+                \   'fallback': 'find %s -type f | grep -v "' . g:user_cmd_ignore .'" | head -' .  g:ctrlp_max_files,
+                \   'ignore': 0
+                \ }
+endif
+" }}}
+
+" Python Mode {{{
+let g:pymode_lint_write = 1
+let g:pymode_folding = 0        " disable slow folding
+let g:pymode_lint_checker = 'pylint' "'pyflakes,pep8,mccabe,pylint'
+" }}}
+
+" Ultisnips {{{
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsListSnippets = "<s-tab>"
+let g:UltiSnipsNoPythonWarning = 1
+" }}}
+
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+" LATEX support for tagbar
+let g:tagbar_type_tex = {
+            \ 'ctagstype' : 'latex',
+            \ 'kinds'     : [
+                \ 's:sections',
+                \ 'g:graphics:0:0',
+                \ 'l:labels',
+                \ 'r:refs:1:0',
+                \ 'p:pagerefs:1:0'
+            \ ],
+            \ 'sort'    : 0,
+        \ }
+
+" TeX Suite default to PDF
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_MultipleCompileFormats = 'dvi,pdf'
+
+" syntastic on load
+let g:syntastic_check_on_open=1
