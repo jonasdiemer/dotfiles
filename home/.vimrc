@@ -16,9 +16,10 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'jonasdiemer/LaTeX-Box'
-Bundle 'kien/python-mode'
+Bundle 'klen/python-mode'
 Bundle 'SirVer/ultisnips'
 Bundle 'bronson/vim-visual-star-search'
+Bundle 'basilgor/vim-autotags'
 
 " vim-scripts repos
 "Bundle 'FuzzyFinder'
@@ -145,7 +146,7 @@ endfunction
 " EasyTags {{{
 let g:easytags_by_filetype = "~/.vimtag"
 " follow tag more like eclipse
-:map <F3> <C-]>
+:map t <C-]>
 :map <S-F3> :sp<CR><C-]>
 " Disable automatic highlighting
 "let b:easytags_auto_highlight = 0
