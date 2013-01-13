@@ -15,7 +15,8 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'jonasdiemer/LaTeX-Box'
+"Bundle 'jonasdiemer/LaTeX-Box'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'klen/python-mode'
 Bundle 'SirVer/ultisnips'
 Bundle 'bronson/vim-visual-star-search'
@@ -80,6 +81,8 @@ nmap ,/ :noh<CR> 		" reset highlights on ,/
 " Spell Checking {{{
 " English by default
 set spell spelllang=en_us
+" Limit number of suggestions
+set spellsuggest=best,10
 " mappings to switch
 nmap <F12>us :setlocal spell spelllang=en_us <CR>
 nmap <F12>c :setlocal nospell <CR>
