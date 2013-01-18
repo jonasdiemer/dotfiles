@@ -15,9 +15,10 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'SirVer/ultisnips'
+Bundle 'ervandew/supertab'
 Bundle 'jonasdiemer/LaTeX-Box'
 Bundle 'klen/python-mode'
-Bundle 'SirVer/ultisnips'
 Bundle 'bronson/vim-visual-star-search'
 Bundle 'basilgor/vim-autotags'
 
@@ -41,11 +42,15 @@ set cc=80 			" highlight column 80
 set t_Co=256
 colorscheme xoria256 " also nice: wombat256mod, inkpot, pablo, torte
 set laststatus=2 		" enable status line always
+" }}}
+" Basic Behavior {{{
 set hidden          " don't close buffers
 set clipboard=unnamed   " copy/paste works with rest of system
 autocmd! bufwritepost .vimrc source %   " automatically reload vimrc on changes
 set mouse=a " enable mouse
 set ttymouse=xterm2 " enable dragging
+" visually select pasted text
+nnoremap gp `[v`]  
 "}}}
 " Diff {{{
 " turn wrap back on for diffs
@@ -94,8 +99,8 @@ autocmd Syntax * syn match SpellRare /\v<(\w+)\_s+\1>/ containedin=ALL
 " Misc {{{
 
 " Navigate with j,k in Insert Mode Completion (also for spell check)
-inoremap <expr> j pumvisible() ? "\<C-N>" : "j"
-inoremap <expr> k pumvisible() ? "\<C-P>" : "k"
+"inoremap <expr> j pumvisible() ? "\<C-N>" : "j"
+"inoremap <expr> k pumvisible() ? "\<C-P>" : "k"
 "}}}
 " easier split/tab navigation {{{
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
@@ -146,7 +151,6 @@ endfunction
 " EasyTags {{{
 let g:easytags_by_filetype = "~/.vimtag"
 " follow tag more like eclipse
-:map t <C-]>
 :map <S-F3> :sp<CR><C-]>
 " Disable automatic highlighting
 "let b:easytags_auto_highlight = 0
