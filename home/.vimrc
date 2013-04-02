@@ -87,7 +87,7 @@ nmap ,/ :noh<CR> 		" reset highlights on ,/
 " English by default
 set spell spelllang=en_us
 " Limit number of suggestions
-set spellsuggest=best,10
+set spellsuggest=fast,10
 " mappings to switch
 nmap <F12>us :setlocal spell spelllang=en_us <CR>
 nmap <F12>c :setlocal nospell <CR>
@@ -96,7 +96,7 @@ nmap <F12>de :setlocal spell spelllang=de <CR>
 imap <F9> <C-x>s
 nmap <F9> <Esc>ea<C-x>s
 "set mousemodel=popup_setpos 	" right click -> popup
-" find and highlight duplicate words
+" find and highlight duplicate words TODO: only for latex
 autocmd Syntax * syn match SpellRare /\v<(\w+)\_s+\1>/ containedin=ALL
 " }}}
 " Misc {{{
@@ -208,6 +208,7 @@ let g:UltiSnipsListSnippets = "<s-tab>"
 let g:UltiSnipsNoPythonWarning = 1
 " }}}
 
+let g:LatexBox_Folding = 1
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
