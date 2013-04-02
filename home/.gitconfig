@@ -1,3 +1,6 @@
 [alias]
     ci = commit
     st = status
+[user]
+	name = Jonas Diemer
+	email = jonasdiemer@gmail.com
