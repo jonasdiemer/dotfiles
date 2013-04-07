@@ -129,3 +129,5 @@ fi
 # Use vim as syntax highlighting pager
 alias vless="/usr/share/vim/vim73/macros/less.sh"
 
+
+alias homesick="$HOME/.homeshick"
