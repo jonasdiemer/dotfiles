@@ -208,6 +208,11 @@ let g:UltiSnipsListSnippets = "<s-tab>"
 let g:UltiSnipsNoPythonWarning = 1
 " }}}
 
+" LatexBox {{{
+let g:LatexBox_Folding = 1
+" }}}
+
+
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
