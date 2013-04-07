@@ -1,6 +1,17 @@
 
 # Package-specific stuff
 
+# Figure
+snippet "fig" "figure" br
+\begin{figure}[${1:bt}]
+\centering
+\includegraphics[width=.8\textwidth]{${2:filename}}
+\caption{${3:Caption}}
+\label{fig:switch_baseline}
+\end{figure}
+endsnippet
+
+
 # Glossaries
 snippet g "Glossary term singular"
 \gls{${1}} 
@@ -9,3 +20,6 @@ endsnippet
 snippet gp "Glossary term plural"
 \glspl{${1}} 
 endsnippet
+
+
+
