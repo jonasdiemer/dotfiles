@@ -120,20 +120,12 @@ set switchbuf=usetab " Open existing tabs
 " }}}
 
 " Experimental {{{
-" center-cursor movement
-nmap <C-j> jzz
-nmap <C-k> kzz
 set so=7 "keep some lines visible on scroll
 
-" Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
-let mapleader = ","
-
-" Unbind cursor keys for training
+" Unbind cursor/arrow keys for training
 for prefix in ['i', 'n', 'v']
   for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-    "exe prefix . "noremap " . key . " <Nop>"
+    exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
 
