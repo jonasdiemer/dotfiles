@@ -129,3 +129,6 @@ fi
 # Use vim as syntax highlighting pager
 alias vless="/usr/share/vim/vim73/macros/less.sh"
 
+# add pycpa to Python path
+export PYTHONPATH=~/workspace/pycpa_public:~/workspace/pycpa_ethernet
+
