@@ -81,7 +81,7 @@ set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
-nmap ,/ :noh<CR> 		" reset highlights on ,/ 
+nmap <leader>/ :nohlsearch<CR> 	" reset highlights on ,/ 
 " }}}
 " Spell Checking {{{
 " English by default
@@ -166,7 +166,7 @@ let g:ctrlp_working_path_mode = 'ra'
 " Sane Ignore For ctrlp                                                         
 let g:ctrlp_custom_ignore = {                                                   
   \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$\|\.gvfs$\|\.cache$\|\.thumbnails$\|temp$',
-  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.pdf$\|\.pyc$'
+  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.pdf$\|\.pyc$\|\.aux$'
   \ } 
 " ignore dotfiles/dotdirs
 let g:ctrlp_dotfiles = 0
@@ -201,7 +201,7 @@ let g:UltiSnipsNoPythonWarning = 1
 " }}}
 
 " LatexBox {{{
-let g:LatexBox_Folding = 1
+"let g:LatexBox_Folding = 1
 " }}}
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
