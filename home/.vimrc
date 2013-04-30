@@ -39,9 +39,10 @@ syntax enable
 set encoding=utf-8
 set showcmd                     " display incomplete commands
 set number 			" enable line numbers
-set cc=80 			" highlight column 80
 set t_Co=256
-colorscheme xoria256 " also nice: wombat256mod, inkpot, pablo, torte
+colorscheme xoria256 " also nice: wombat256mod, inkpot, pablo, torte            
+let &colorcolumn="81,".join(range(81,511),",")  " highlight every col past 80
+highlight ColorColumn guibg=#2d2d2d ctermbg=235
 set laststatus=2 		" enable status line always
 " }}}
 " Basic Behavior {{{
@@ -73,8 +74,8 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set smartindent
 set smarttab
 " show trailing white space 
-highlight ExtraWhitespace ctermbg=grey guibg=lightgreen 
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+highlight ExtraWhitespace ctermbg=236 guibg=lightgreen   
+autocmd Syntax *.tex syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 "}}}
 " Searching {{{
 set hlsearch                    " highlight matches
@@ -201,7 +202,7 @@ let g:UltiSnipsNoPythonWarning = 1
 " }}}
 
 " LatexBox {{{
-"let g:LatexBox_Folding = 1
+let g:LatexBox_Folding = 1
 " }}}
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
