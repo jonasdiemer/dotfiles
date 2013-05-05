@@ -116,7 +116,11 @@ map <c-h> <c-w>h
 " easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
-set switchbuf=usetab " Open existing tabs
+" tab navigation using tab
+nnoremap <S-tab> :tabprevious<CR>
+nnoremap <tab>   :tabnext<CR>
+" Open existing tabs instead of creating duplicates
+set switchbuf=usetab 
 "}}}
 " }}}
 
@@ -203,6 +207,8 @@ let g:UltiSnipsNoPythonWarning = 1
 
 " LatexBox {{{
 let g:LatexBox_Folding = 1
+" disable folding of environments
+let g:LatexBox_fold_envsa = 0
 " }}}
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
