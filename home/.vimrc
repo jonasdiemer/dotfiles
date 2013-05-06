@@ -75,14 +75,15 @@ set smartindent
 set smarttab
 " show trailing white space 
 highlight ExtraWhitespace ctermbg=236 guibg=lightgreen   
-autocmd Syntax *.tex syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 "}}}
 " Searching {{{
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
-nmap <leader>/ :nohlsearch<CR> 	" reset highlights on ,/ 
+" reset highlights
+nmap <leader>/ :nohlsearch<CR>
 " }}}
 " Spell Checking {{{
 " English by default
