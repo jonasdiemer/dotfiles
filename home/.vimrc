@@ -208,7 +208,7 @@ let g:UltiSnipsNoPythonWarning = 1
 " LatexBox {{{
 let g:LatexBox_Folding = 1
 " disable folding of environments
-let g:LatexBox_fold_envsa = 0
+let g:LatexBox_fold_env = 0
 " }}}
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
