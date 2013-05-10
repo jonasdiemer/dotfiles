@@ -94,9 +94,10 @@ set spellsuggest=fast,10
 nmap <F12>us :setlocal spell spelllang=en_us <CR>
 nmap <F12>c :setlocal nospell <CR>
 nmap <F12>de :setlocal spell spelllang=de <CR>
-" open suggestions in Insert Mode Completion popup
-imap <F9> <C-x>s
-nmap <F9> <Esc>ea<C-x>s
+" preselect suggestion one
+nnoremap z= z=1
+" quick fix last mistake
+imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "set mousemodel=popup_setpos 	" right click -> popup
 " find and highlight duplicate words TODO: only for latex
 autocmd Syntax * syn match SpellRare /\v<(\w+)\_s+\1>/ containedin=ALL
