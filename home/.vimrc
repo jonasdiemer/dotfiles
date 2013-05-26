@@ -74,7 +74,7 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set smartindent
 set smarttab
 " show trailing white space 
-highlight ExtraWhitespace ctermbg=236 guibg=lightgreen   
+highlight ExtraWhitespace ctermbg=235 guibg=lightgreen 
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 "}}}
 " Searching {{{
@@ -94,10 +94,9 @@ set spellsuggest=fast,10
 nmap <F12>us :setlocal spell spelllang=en_us <CR>
 nmap <F12>c :setlocal nospell <CR>
 nmap <F12>de :setlocal spell spelllang=de <CR>
-" preselect suggestion one
-nnoremap z= z=1
 " quick fix last mistake
-imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-f> [s1z=<c-o>
 "set mousemodel=popup_setpos 	" right click -> popup
 " find and highlight duplicate words TODO: only for latex
 autocmd Syntax * syn match SpellRare /\v<(\w+)\_s+\1>/ containedin=ALL
