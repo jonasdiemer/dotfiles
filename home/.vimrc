@@ -52,7 +52,7 @@ autocmd! bufwritepost .vimrc source %   " automatically reload vimrc on changes
 set mouse=a " enable mouse
 set ttymouse=xterm2 " enable dragging
 " visually select pasted text
-nnoremap gp `[v`]  
+nnoremap gp `[v`]
 "}}}
 " Diff {{{
 " turn wrap back on for diffs
