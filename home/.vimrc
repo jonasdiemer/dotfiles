@@ -1,10 +1,18 @@
 " vim:fdm=marker
 
+" Platform independent vim folder
+if has("win32")
+    " define in 'outer' vimrc which sources this one
+else
+    if has("unix")
+        let g:VIMFILES='~/.vim'
+    endif
+endif
 " Vundle {{{
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
+let &rtp.=','.g:VIMFILES.'/bundle/vundle/'
 call vundle#rc()
 
 " let Vundle manage Vundle. required!
@@ -136,7 +144,7 @@ for prefix in ['i', 'n', 'v']
 endfor
 
 " Store swap/backup files in central position
-silent !mkdir ~/.vim/backup/ 2>/dev/null
+exe 'silent !mkdir '.g:VIMFILES.'/backup/ 2>/dev/null'
 set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 
