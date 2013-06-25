@@ -3,10 +3,8 @@
 " Platform independent vim folder
 if has("win32")
     " define in 'outer' vimrc which sources this one
-else
-    if has("unix")
-        let g:VIMFILES='~/.vim'
-    endif
+elseif has("unix")
+  let g:VIMFILES='~/.vim'
 endif
 " Vundle {{{
 set nocompatible               " be iMproved
@@ -218,6 +216,9 @@ let g:UltiSnipsNoPythonWarning = 1
 let g:LatexBox_Folding = 1
 " disable folding of environments
 let g:LatexBox_fold_env = 0
+if has('mac')
+  let g:LatexBox_viewer = 'open'
+endif
 " }}}
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
