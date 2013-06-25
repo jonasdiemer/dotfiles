@@ -2,8 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-
-export PATH=~/bin:$PATH
+# Add ~/bin and /usr/local/bin first, so they override others
+export PATH=~/bin:/usr/local/bin:$PATH
 
 # check if mercurial is there, if not, source it
 if which hg &> /dev/null; then
@@ -123,6 +123,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# default editor is vim
+export EDITOR='vim'
+
 # start vim in server mode
 alias vim='vim --servername vim'
 
@@ -140,4 +143,4 @@ alias vless="/usr/share/vim/vim73/macros/less.sh"
 # add pycpa to Python path
 export PYTHONPATH=~/workspace/pycpa_public:~/workspace/pycpa_ethernet
 
-alias homesick="$HOME/.homeshick"
+alias homesick="$HOME/.homesick/repos/homeshick/home/.homeshick"
