@@ -27,7 +27,9 @@ Bundle 'ervandew/supertab'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'klen/python-mode'
 Bundle 'bronson/vim-visual-star-search'
-Bundle 'basilgor/vim-autotags'
+if !has("win32")
+    Bundle 'basilgor/vim-autotags'
+endif
 
 " vim-scripts repos
 "Bundle 'FuzzyFinder'
