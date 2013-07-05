@@ -3,6 +3,10 @@
 " Platform independent vim folder
 if has("win32")
     " define in 'outer' vimrc which sources this one
+    set langmenu=en_US
+    let $LANG = 'en_US'
+    source $VIMRUNTIME\delmenu.vim
+    source $VIMRUNTIME\menu.vim
 elseif has("unix")
   let g:VIMFILES='~/.vim'
 endif
@@ -82,7 +86,7 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set smartindent
 set smarttab
 " show trailing white space 
-highlight ExtraWhitespace ctermbg=235 guibg=lightgreen 
+highlight ExtraWhitespace ctermbg=235 guibg=#4d4d4d
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 "}}}
 " Searching {{{
@@ -201,7 +205,7 @@ endif
 " }}}
 
 " Python Mode {{{
-let g:pymode_lint_write = 1
+let g:pymode_lint_write = 0
 let g:pymode_folding = 0        " disable slow folding
 let g:pymode_lint_checker = 'pylint' "'pyflakes,pep8,mccabe,pylint'
 " }}}
