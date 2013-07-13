@@ -28,6 +28,7 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'klen/python-mode'
 Bundle 'bronson/vim-visual-star-search'
 Bundle 'basilgor/vim-autotags'
+Bundle 'davidoc/taskpaper.vim'
 
 " vim-scripts repos
 "Bundle 'FuzzyFinder'
@@ -219,6 +220,12 @@ let g:LatexBox_fold_env = 0
 if has('mac')
   let g:LatexBox_viewer = 'open'
 endif
+" }}}
+
+" Taskpaper.vim {{{
+" do not follow moved tasks
+let g:task_paper_follow_move = 0
+
 " }}}
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
