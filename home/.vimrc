@@ -207,7 +207,7 @@ endif
 
 " Python Mode {{{
 let g:pymode_lint_write = 0
-let g:pymode_folding = 0        " disable slow folding
+let g:pymode_folding = 1        " disable slow folding
 let g:pymode_lint_checker = 'pylint' "'pyflakes,pep8,mccabe,pylint'
 " }}}
 
