@@ -3,6 +3,10 @@
 " Platform independent vim folder
 if has("win32")
     " define in 'outer' vimrc which sources this one
+    set langmenu=en_US
+    let $LANG = 'en_US'
+    source $VIMRUNTIME\delmenu.vim
+    source $VIMRUNTIME\menu.vim
 elseif has("unix")
   let g:VIMFILES='~/.vim'
 endif
@@ -27,8 +31,10 @@ Bundle 'ervandew/supertab'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'klen/python-mode'
 Bundle 'bronson/vim-visual-star-search'
-Bundle 'basilgor/vim-autotags'
 Bundle 'davidoc/taskpaper.vim'
+if !has("win32")
+    Bundle 'basilgor/vim-autotags'
+endif
 
 " vim-scripts repos
 "Bundle 'FuzzyFinder'
@@ -81,7 +87,7 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set smartindent
 set smarttab
 " show trailing white space 
-highlight ExtraWhitespace ctermbg=235 guibg=lightgreen 
+highlight ExtraWhitespace ctermbg=235 guibg=#4d4d4d
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 "}}}
 " Searching {{{
@@ -144,8 +150,8 @@ endfor
 
 " Store swap/backup files in central position
 exe 'silent !mkdir '.g:VIMFILES.'/backup/ 2>/dev/null'
-set backupdir=~/.vim/backup/
-set directory=~/.vim/backup/
+let &backupdir=g:VIMFILES.'/backup/'
+let &directory=g:VIMFILES.'/backup/'
 
 " This allows for change paste motion cp{motion}
 nmap <silent> cp :set opfunc=ChangePaste<CR>g@
@@ -200,7 +206,7 @@ endif
 " }}}
 
 " Python Mode {{{
-let g:pymode_lint_write = 1
+let g:pymode_lint_write = 0
 let g:pymode_folding = 0        " disable slow folding
 let g:pymode_lint_checker = 'pylint' "'pyflakes,pep8,mccabe,pylint'
 " }}}
