@@ -150,8 +150,8 @@ endfor
 
 " Store swap/backup files in central position
 exe 'silent !mkdir '.g:VIMFILES.'/backup/ 2>/dev/null'
-let &backupdir=g:VIMFILES.'/backup/'
-let &directory=g:VIMFILES.'/backup/'
+let &backupdir = expand(g:VIMFILES.'/backup/')
+let &directory = expand(g:VIMFILES.'/backup/')
 
 " This allows for change paste motion cp{motion}
 nmap <silent> cp :set opfunc=ChangePaste<CR>g@
