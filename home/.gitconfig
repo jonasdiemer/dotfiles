@@ -4,3 +4,5 @@
 [user]
 	email = jonasdiemer@gmail.com
 	name = Jonas Diemer
+[push]
+	default = simple
