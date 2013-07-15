@@ -32,6 +32,7 @@ Bundle 'klen/python-mode'
 Bundle 'bronson/vim-visual-star-search'
 Bundle 'davidoc/taskpaper.vim'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'joeytwiddle/sexy_scroller.vim'
 if !has("win32")
     Bundle 'basilgor/vim-autotags'
 endif
@@ -252,6 +253,12 @@ endif
 " do not follow moved tasks
 let g:task_paper_follow_move = 0
 
+" }}}
+
+" Sexy Scroller {{{
+let g:SexyScroller_EasingStyle=1
+let g:SexyScroller_MaxTime=1200
+let g:SexyScroller_ScrollTime=20
 " }}}
 
 
