@@ -224,9 +224,10 @@ endif
 
 " Python Mode {{{
 if has('win32')
+    " somehow broken on windows
     let g:pymode_lint_write = 0
 endif
-let g:pymode_folding = 0        " disable slow folding
+let g:pymode_folding = 1        " disable if slow 
 let g:pymode_lint_checker = 'pylint' "'pyflakes,pep8,mccabe,pylint'
 " }}}
 
