@@ -1,4 +1,4 @@
-" vim:fdm=marker
+" vim:fdm=marker   
 
 " Platform independent vim folder
 if has("win32")
@@ -27,11 +27,11 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
-"Bundle 'jonasdiemer/LaTeX-Box'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'klen/python-mode'
 Bundle 'bronson/vim-visual-star-search'
 Bundle 'davidoc/taskpaper.vim'
+Bundle 'plasticboy/vim-markdown'
 if !has("win32")
     Bundle 'basilgor/vim-autotags'
 endif
@@ -53,8 +53,11 @@ set encoding=utf-8
 set showcmd                     " display incomplete commands
 set number 			" enable line numbers
 set t_Co=256
-colorscheme xoria256 " also nice: wombat256mod, inkpot, pablo, torte            
-let &colorcolumn="81,".join(range(81,511),",")  " highlight every col past 80
+colorscheme xoria256 " also nice: wombat256mod, inkpot, pablo, torte
+"let &colorcolumn="81,".join(range(81,511),",")  " highlight every col past 80
+" Highlighting more than one column masks any other background highlighting,
+" such as whitespace or TODO markers... So, highlight only the 81st column
+let &colorcolumn="81"
 highlight ColorColumn guibg=#2d2d2d ctermbg=235
 set laststatus=2 		" enable status line always
 " }}}
@@ -87,7 +90,7 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set smartindent
 set smarttab
 " show trailing white space 
-highlight ExtraWhitespace ctermbg=235 guibg=#4d4d4d
+highlight ExtraWhitespace ctermbg=235 guibg=#4d4d4d  
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 "}}}
 " Searching {{{
@@ -110,6 +113,15 @@ nmap <F12>de :setlocal spell spelllang=de <CR>
 " quick fix last mistake
 imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
 nmap <c-f> [s1z=<c-o>
+" color of spelling mistakes
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
 "set mousemodel=popup_setpos 	" right click -> popup
 " find and highlight duplicate words TODO: only for latex
 autocmd Syntax * syn match SpellRare /\v<(\w+)\_s+\1>/ containedin=ALL
@@ -170,6 +182,11 @@ let g:easytags_by_filetype = "~/.vimtag"
 "let b:easytags_auto_highlight = 0
 " }}}
 
+" Supertab {{{
+" Use omnicompletion by default.
+let g:SuperTabDefaultCompletionType="<c-x><c-o>"
+" }}}
+
 " NERDTree {{{
 :nmap <C-n> :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore = ['\~$', '\.pyc$'] 
@@ -206,7 +223,9 @@ endif
 " }}}
 
 " Python Mode {{{
-let g:pymode_lint_write = 0
+if has('win32')
+    let g:pymode_lint_write = 0
+endif
 let g:pymode_folding = 0        " disable slow folding
 let g:pymode_lint_checker = 'pylint' "'pyflakes,pep8,mccabe,pylint'
 " }}}
@@ -233,6 +252,7 @@ endif
 let g:task_paper_follow_move = 0
 
 " }}}
+
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
