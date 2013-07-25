@@ -24,9 +24,12 @@ Bundle 'gmarik/vundle'
 " original repos on github
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
 Bundle 'SirVer/ultisnips'
 Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-fugitive'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'klen/python-mode'
 Bundle 'bronson/vim-visual-star-search'
@@ -252,13 +255,15 @@ endif
 " Taskpaper.vim {{{
 " do not follow moved tasks
 let g:task_paper_follow_move = 0
+" Hide done tasks during search
+let g:task_paper_search_hide_done = 1
 
 " }}}
 
 " Sexy Scroller {{{
-let g:SexyScroller_EasingStyle=1
-let g:SexyScroller_MaxTime=1200
-let g:SexyScroller_ScrollTime=20
+let g:SexyScroller_EasingStyle=2
+let g:SexyScroller_MaxTime=400
+let g:SexyScroller_ScrollTime=10
 " }}}
 
 
