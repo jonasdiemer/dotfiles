@@ -165,7 +165,7 @@ for prefix in ['i', 'n', 'v']
 endfor
 
 " Store swap/backup files in central position
-exe 'silent !mkdir '.g:VIMFILES.'/backup/ 2>/dev/null'
+"exe 'silent !mkdir '.g:VIMFILES.'/backup/ 2>/dev/null'
 let &backupdir = expand(g:VIMFILES.'/backup/')
 let &directory = expand(g:VIMFILES.'/backup/')
 
