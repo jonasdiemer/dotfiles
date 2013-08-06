@@ -91,7 +91,8 @@ set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 "smart indent/tab
-set smartindent
+"no good for python comments
+"set smartindent
 set smarttab
 " show trailing white space 
 highlight ExtraWhitespace ctermbg=235 guibg=#4d4d4d  
