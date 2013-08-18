@@ -33,6 +33,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'klen/python-mode'
 Bundle 'bronson/vim-visual-star-search'
+"Bundle 'mivok/vimtodo'
+Bundle 'freitass/todo.txt-vim'
 Bundle 'davidoc/taskpaper.vim'
 "Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-markdown'
@@ -93,7 +95,7 @@ set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 "smart indent/tab
-set smartindent
+" disabled, because it sucks in python set smartindent
 set smarttab
 " show trailing white space 
 highlight ExtraWhitespace ctermbg=235 guibg=#4d4d4d  
@@ -293,3 +295,6 @@ let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
 " syntastic on load
 let g:syntastic_check_on_open=1
+
+" markdown
+let g:markdown_fold_style = 'nested'
