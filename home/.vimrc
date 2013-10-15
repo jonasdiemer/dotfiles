@@ -42,6 +42,7 @@ Bundle 'nelstrom/vim-markdown-folding'
 "Bundle 'joeytwiddle/sexy_scroller.vim'
 "Bundle 'bling/vim-airline'
 "Bundle 'bling/vim-bufferline'
+Bundle 'Lokaltog/vim-easymotion'
 " Development {{{2
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
@@ -63,7 +64,7 @@ set nocompatible            	" choose no compatibility with legacy vi
 syntax enable
 set encoding=utf-8
 set showcmd                     " display incomplete commands
-set number 			" enable line numbers
+set relativenumber 			" enable relative line numbers
 set t_Co=256
 colorscheme xoria256 " also nice: wombat256mod, inkpot, pablo, torte
 "let &colorcolumn="81,".join(range(81,511),",")  " highlight every col past 80
